@@ -1,0 +1,3 @@
+iboved_test:
+    resource: "@IbovedTestBundle/Resources/config/routing.yml"
+    prefix:   /

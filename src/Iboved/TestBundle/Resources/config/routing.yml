@@ -1,0 +1,7 @@
+iboved_test_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: IbovedTestBundle:Default:index }
+
+random:
+    path:     /random/{limit}
+    defaults: { _controller: IbovedTestBundle:Random:index }
