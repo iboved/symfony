@@ -4,5 +4,5 @@ iboved_test_homepage:
     prefix:   /space
 
 random:
-    path:     /random/{limit}
+    path:     /random
     defaults: { _controller: IbovedTestBundle:Random:index }

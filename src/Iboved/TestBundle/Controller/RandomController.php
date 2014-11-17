@@ -6,10 +6,28 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class RandomController extends Controller
 {
-    public function indexAction($limit)
+    public function indexAction()
     {
-        $number = rand(1, $limit);
+        $number = rand(1, 5);
 
-        return $this->render('IbovedTestBundle:Random:index.html.twig', array('number' => $number));
+        switch($number) {
+            case 1:
+                $result = 'Default:sun';
+                break;
+            case 2:
+                $result = 'Default:mercury';
+                break;
+            case 3:
+                $result = 'Default:venus';
+                break;
+            case 4:
+                $result = 'Default:earth';
+                break;
+            case 5:
+                $result = 'Default:mars';
+                break;
+        }
+
+        return $this->render("IbovedTestBundle:{$result}.html.twig");
     }
 }
