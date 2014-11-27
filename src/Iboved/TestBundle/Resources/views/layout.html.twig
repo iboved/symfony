@@ -11,7 +11,7 @@
     {% block content_header %}
         <ul id="menu">
             {% block content_header_more %}
-                <li><a href="{{ path('random') }}">Generate random</a>
+                <li><a href="{{ path('random', {'limit': 100}) }}">Generate random</a>
                     <a href="{{ path('_space') }}">Go to Homepage</a></li>
             {% endblock %}
         </ul>
