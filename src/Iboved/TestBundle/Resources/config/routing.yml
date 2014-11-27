@@ -1,7 +1,7 @@
 iboved_test_homepage:
     resource: "@IbovedTestBundle/Controller/DefaultController.php"
     type:     annotation
-    prefix:   /space
+    prefix:   /work
 
 random:
     path:     /random/{limit}

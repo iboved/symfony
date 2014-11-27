@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="_space")
+     * @Route("/", name="_work")
      * @Template()
      */
     public function indexAction()
@@ -20,55 +20,55 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/hello/{name}", name="_space_hello")
+     * @Route("/addresume", name="_work_addresume")
      * @Template()
      */
-    public function helloAction($name)
-    {
-        return array('name' => $name);
-    }
-
-    /**
-     * @Route("/sun", name="_space_sun")
-     * @Template()
-     */
-    public function sunAction()
+    public function addresumeAction()
     {
         return array();
     }
 
     /**
-     * @Route("/mercury", name="_space_mercury")
+     * @Route("/viewresume", name="_work_viewresume")
      * @Template()
      */
-    public function mercuryAction()
+    public function viewresumeAction()
     {
         return array();
     }
 
     /**
-     * @Route("/venus", name="_space_venus")
+     * @Route("/addjob", name="_work_addjob")
      * @Template()
      */
-    public function venusAction()
+    public function addjobAction()
     {
         return array();
     }
 
     /**
-     * @Route("/earth", name="_space_earth")
+     * @Route("/viewjob", name="_work_viewjob")
      * @Template()
      */
-    public function earthAction()
+    public function viewjobAction()
     {
         return array();
     }
 
     /**
-     * @Route("/mars", name="_space_mars")
+     * @Route("/about", name="_work_about")
      * @Template()
      */
-    public function marsAction()
+    public function aboutAction()
+    {
+        return array();
+    }
+
+    /**
+     * @Route("/contact", name="_work_contact")
+     * @Template()
+     */
+    public function contactAction()
     {
         return array();
     }

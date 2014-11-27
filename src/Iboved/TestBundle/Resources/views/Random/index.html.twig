@@ -1,10 +1,8 @@
-{% extends "IbovedTestBundle::layout.html.twig" %}
+{% extends "::base.html.twig" %}
 
-{% block title "Random number" %}
+{% block title %}Random number{% endblock %}
 
 {% block content %}
-    <h1 class="title">Rundom number</h1>
+    <h1>Rundom number</h1>
     Number: {{ number }}
 {% endblock %}
-
-{% set code = code(_self) %}
