@@ -1,0 +1,4 @@
+iboved_store_homepage:
+    resource: "@IbovedStoreBundle/Controller/"
+    type:     annotation
+    prefix:   /shop

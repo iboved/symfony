@@ -1,3 +1,7 @@
+iboved_store:
+    resource: "@IbovedStoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 iboved_test:
     resource: "@IbovedTestBundle/Resources/config/routing.yml"
     prefix:   /
