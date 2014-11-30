@@ -51,4 +51,24 @@ class DefaultController extends Controller
 
         return new Response('Fetch product: '.$product->getName());
     }
+
+    /**
+     * @Route("/update/{id}")
+     */
+    public function updateAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository('IbovedStoreBundle:Product')->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $product->setName('New product name!');
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('iboved_store_default_index'));
+    }
 }
