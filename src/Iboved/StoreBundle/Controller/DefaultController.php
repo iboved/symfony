@@ -12,6 +12,14 @@ class DefaultController extends Controller
     /**
      * @Route("/")
      */
+    public function indexAction()
+    {
+        return $this->render('IbovedStoreBundle:Default:index.html.twig');
+    }
+
+    /**
+     * @Route("/add")
+     */
     public function createAction()
     {
         $product = new Product();
@@ -24,5 +32,23 @@ class DefaultController extends Controller
         $em->flush();
 
         return new Response('Created product id '.$product->getId());
+    }
+
+    /**
+     * @Route("/show/{id}")
+     */
+    public function showAction($id)
+    {
+        $product = $this->getDoctrine()
+            ->getRepository('IbovedStoreBundle:Product')
+            ->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        return new Response('Fetch product: '.$product->getName());
     }
 }
