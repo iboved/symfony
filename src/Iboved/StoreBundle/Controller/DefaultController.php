@@ -26,9 +26,11 @@ class DefaultController extends Controller
         $product->setName('A Foo Bar');
         $product->setPrice('19.99');
         $product->setDescription('Lorem ipsum dolor');
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($product);
         $em->flush();
+
         return new Response('Created product id '.$product->getId());
     }
 
@@ -40,11 +42,13 @@ class DefaultController extends Controller
         $product = $this->getDoctrine()
             ->getRepository('IbovedStoreBundle:Product')
             ->find($id);
+
         if (!$product) {
             throw $this->createNotFoundException(
                 'No product found for id '.$id
             );
         }
+
         return new Response('Fetch product: '.$product->getName());
     }
 
@@ -66,5 +70,25 @@ class DefaultController extends Controller
         $em->flush();
 
         return $this->redirect($this->generateUrl('iboved_store_default_index'));
+    }
+
+    /**
+     * @Route("/delete/{id}")
+     */
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository('IbovedStoreBundle:Product')->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $em->remove($product);
+        $em->flush();
+
+        return new Response('Delete product id '.$id);
     }
 }
