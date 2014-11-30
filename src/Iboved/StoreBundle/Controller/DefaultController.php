@@ -26,11 +26,9 @@ class DefaultController extends Controller
         $product->setName('A Foo Bar');
         $product->setPrice('19.99');
         $product->setDescription('Lorem ipsum dolor');
-
         $em = $this->getDoctrine()->getManager();
         $em->persist($product);
         $em->flush();
-
         return new Response('Created product id '.$product->getId());
     }
 
@@ -42,13 +40,11 @@ class DefaultController extends Controller
         $product = $this->getDoctrine()
             ->getRepository('IbovedStoreBundle:Product')
             ->find($id);
-
         if (!$product) {
             throw $this->createNotFoundException(
                 'No product found for id '.$id
             );
         }
-
         return new Response('Fetch product: '.$product->getName());
     }
 
