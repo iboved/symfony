@@ -3,19 +3,26 @@
 namespace Iboved\StoreBundle\Controller;
 
 use Iboved\StoreBundle\Entity\Category;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Iboved\StoreBundle\Entity\Product;
 use Symfony\Component\HttpFoundation\Response;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/")
+     * @Template()
      */
     public function indexAction()
     {
-        return $this->render('IbovedStoreBundle:Default:index.html.twig');
+        $products = $this->getDoctrine()
+            ->getRepository('IbovedStoreBundle:Product')
+            ->findAll();
+
+        return array('products'=>$products);
     }
 
     /**
@@ -30,7 +37,6 @@ class DefaultController extends Controller
         $product->setName('A Foo Bar');
         $product->setPrice('19.99');
         $product->setDescription('Lorem ipsum dolor');
-
         $product->setCategory($category);
 
         $em = $this->getDoctrine()->getManager();

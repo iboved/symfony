@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="Iboved\StoreBundle\Entity\ProductRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Product
 {
@@ -37,6 +38,19 @@ class Product
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     protected $category;
+
+    /**
+     * @ORM\Column(name="created", type="datetime")
+     */
+    protected $createdAt;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     /**
      * Get id

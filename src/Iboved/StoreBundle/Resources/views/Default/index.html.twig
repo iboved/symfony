@@ -1,8 +1,23 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Job Search{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>One search. All jobs</h1>
-    <p>Here  you can add your resume or find a great job!</p>
+    <div class="block">
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr>
+
+        {% for product in products %}
+            <tr>
+                <td class="active">{{ product.name }}</td>
+                <td class="active">{{ product.category.name }}</td>
+                <td class="active">{{ product.price }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
 {% endblock %}
