@@ -3,73 +3,34 @@
 namespace Iboved\TestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-// these import the "@Route" and "@Template" annotations
+use Iboved\TestBundle\Entity\Task;
+use Iboved\TestBundle\Form\Type\TaskType;
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="_work")
-     * @Template()
+     * @Route("/new")
      */
-    public function indexAction()
+    public function newAction(Request $request)
     {
-        return array();
-    }
+        $task = new Task();
 
-    /**
-     * @Route("/addresume", name="_work_addresume")
-     * @Template()
-     */
-    public function addresumeAction()
-    {
-        return array();
-    }
+        $form = $this->createForm(new TaskType(), $task);
 
-    /**
-     * @Route("/viewresume", name="_work_viewresume")
-     * @Template()
-     */
-    public function viewresumeAction()
-    {
-        return array();
-    }
+        $form->handleRequest($request);
 
-    /**
-     * @Route("/addjob", name="_work_addjob")
-     * @Template()
-     */
-    public function addjobAction()
-    {
-        return array();
-    }
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($task);
+            $em->flush();
 
-    /**
-     * @Route("/viewjob", name="_work_viewjob")
-     * @Template()
-     */
-    public function viewjobAction()
-    {
-        return array();
-    }
+            return $this->redirect($this->generateUrl('_welcome'));
+        }
 
-    /**
-     * @Route("/about", name="_work_about")
-     * @Template()
-     */
-    public function aboutAction()
-    {
-        return array();
-    }
-
-    /**
-     * @Route("/contact", name="_work_contact")
-     * @Template()
-     */
-    public function contactAction()
-    {
-        return array();
+        return $this->render('IbovedTestBundle:Default:new.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 }
