@@ -1,0 +1,8 @@
+iboved_test_homepage:
+    resource: "@IbovedTestBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /work
+
+random:
+    path:     /random/{limit}
+    defaults: { _controller: IbovedTestBundle:Random:index }

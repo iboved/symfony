@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="block">
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+
+           {#{% for product in products %}
+                <tr>
+                    <td class="active">{{ product.name }}</td>
+                    <td class="active">{{ product.category.name }}</td>
+                    <td class="active">{{ product.price }}</td>
+                </tr>
+            {% endfor %}#}
+        </table>
+    </div>
+{% endblock %}

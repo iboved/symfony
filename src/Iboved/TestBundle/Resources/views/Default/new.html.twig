@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}New task{% endblock %}
+
+{% block content %}
+    {% form_theme form 'IbovedTestBundle:Form:fields.html.twig' %}
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.task) }}
+    {{ form_row(form.dueDate) }}
+    {{ form_row(form.category.name) }}
+
+    {{ form_end(form) }}
+{% endblock %}

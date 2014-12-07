@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Category{% endblock %}
+
+{% block content %}
+    <div class="block">
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+            </tr>
+            {% for category in categories %}
+                <tr>
+                    <td class="active">{{ category.name }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
