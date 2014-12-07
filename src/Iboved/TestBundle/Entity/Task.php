@@ -34,7 +34,7 @@ class Task
     private $dueDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="tasks")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="tasks", cascade={"persist"})
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     protected $category;
